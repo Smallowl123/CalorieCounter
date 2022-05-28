@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable-v24/arrow_back-24px.xml" value="0.1995" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable-v24/arrow_back-48px.xml" value="0.1995" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2985" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable-v24/outline_menu_book_24.xml" value="0.2985" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable-v24/outline_restaurant_24.xml" value="0.2985" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable-v24/outline_water_drop_20.xml" value="0.2985" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable-v24/outline_water_drop_24.xml" value="0.164" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable/add_48px.xml" value="0.1995" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable/arrow_back-24px.xml" value="0.1995" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable/arrow_back_24px.xml" value="0.1995" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable/arrow_back_48px.xml" value="0.1995" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2985" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable/person_24px.xml" value="0.22" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable/person_48px.xml" value="0.1995" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/drawable/receipt_48px.xml" value="0.1995" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/font/roboto.xml" value="0.182129115006413" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/layout/activity_search.xml" value="0.33" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/layout/fragment_page.xml" value="0.5" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/layout/list.xml" value="0.33" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/layout/recyclerview_meal.xml" value="0.33" />
+        <entry key="..\:/Users/Maxim/AndroidStudioProjects/Calorie_counter/app/src/main/res/menu/main.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

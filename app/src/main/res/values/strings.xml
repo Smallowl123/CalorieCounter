@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Calorie_counter</string>
+    <string name="profile">Profile</string>
+    <string name="fork_knife_icon"><![CDATA[Fork&Knife icon]]></string>
+    <string name="water_drop_icon">Water drop icon</string>
+    <string name="norm">Норма</string>
+    <string name="income">Получено</string>
+    <string name="protein">Белки</string>
+    <string name="fat">Жиры</string>
+    <string name="carboh">Углеводы</string>
+    <string name="calories">Калорийность</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
