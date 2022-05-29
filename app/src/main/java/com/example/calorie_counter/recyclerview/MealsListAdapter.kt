@@ -29,7 +29,7 @@ class MealsListAdapter : ListAdapter<Meal, MealsListAdapter.MealsViewHolder>(Mea
         private val mealCaloriesView: TextView = itemView.findViewById(R.id.rv_meal_calories)
 
         fun bind(meal: Meal) {
-            //TODO Добавить всплывающее меню по лонг клику с кнопкой удалить
+            //TODO Добавить всплывающее меню по лонг клику с удалением/изменением веса
             mealNameView.text = meal.name
 
             var s = meal.weight.toString()
@@ -56,7 +56,7 @@ class MealsListAdapter : ListAdapter<Meal, MealsListAdapter.MealsViewHolder>(Mea
         companion object {
             fun create(parent: ViewGroup): MealsViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.recyclerview_meal, parent, false)
+                    .inflate(R.layout.recyclerview_card, parent, false)
                 return MealsViewHolder(view)
             }
         }

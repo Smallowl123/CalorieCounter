@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.action_toolbar))
+        setSupportActionBar(findViewById(R.id.action_toolbar_main))
         val button = findViewById<ImageView>(R.id.add_meal_button)
 
         button.setOnClickListener {
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             //TODO Переход к другой активности с поиском всякого там
         }
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview_main)
         val adapter = MealsListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateSums(meals: List<Meal>) {
-        var caloriesSum = 0
+        var caloriesSum = 0f
         var proteinSum = 0f
         var fatSum = 0f
         var carbohSum = 0f
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             fatSum += meal.fat
             carbohSum += meal.carboh
         }
-        findViewById<TextView>(R.id.calories_income_text).text = caloriesSum.toString()
+        findViewById<TextView>(R.id.calories_income_text).text = caloriesSum.format(1)
         findViewById<TextView>(R.id.protein_income_text).text = proteinSum.format(1)
         findViewById<TextView>(R.id.fat_income_text).text = fatSum.format(1)
         findViewById<TextView>(R.id.carboh_income_text).text = carbohSum.format(1)
