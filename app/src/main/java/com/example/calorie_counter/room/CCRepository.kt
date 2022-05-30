@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 class CCRepository(private val dao: CCDao) {
     val allMeals: Flow<List<Meal>> = dao.getAllMeals()
+    val allFood: Flow<List<Food>> = dao.getAllFood()
     val recentFood: Flow<List<Food>> = dao.getLastUsedFood()
 
     @Suppress("RedundantSuspendModifier")

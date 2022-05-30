@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calorie_counter.R
-import com.example.calorie_counter.recyclerview.MealsListAdapter
+import com.example.calorie_counter.adapters.MealsListAdapter
 import com.example.calorie_counter.room.CCApplication
 import com.example.calorie_counter.room.CCViewModel
 import com.example.calorie_counter.room.CCViewModelFactory
@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         CCViewModelFactory((application as CCApplication).repository)
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(this@MainActivity, SearchActivity::class.java)
             startActivity(intent)
-            //TODO Переход к другой активности с поиском всякого там
         }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview_main)
         val adapter = MealsListAdapter()
@@ -72,6 +72,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.carboh_income_text).text = carbohSum.format(1)
     }
 
-    fun Float.format(digits: Int) = "%.${digits}f".format(this)
+    private fun Float.format(digits: Int) = "%.${digits}f".format(this)
 
 }

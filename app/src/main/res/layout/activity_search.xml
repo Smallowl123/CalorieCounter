@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E8E8E8"
     tools:context=".activities.SearchActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/action_toolbar_sa"
+        android:id="@+id/action_toolbar_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/black"
@@ -22,7 +23,7 @@
         app:titleTextColor="@color/gray" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/add_receipt_button"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="1dp"
@@ -30,17 +31,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/add_food_button"
         app:srcCompat="@drawable/receipt_48px" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/add_food_button"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginEnd="1dp"
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/add_receipt_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/add_48px" />
@@ -52,13 +53,17 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action_toolbar_sa" />
+        app:layout_constraintTop_toBottomOf="@+id/action_toolbar_search" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
+        android:id="@+id/recyclerview_search"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_food_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />

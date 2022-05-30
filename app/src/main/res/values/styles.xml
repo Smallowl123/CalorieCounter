@@ -16,4 +16,8 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">30sp</item>
     </style>
+
+    <style name="actionbar_theme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:homeAsUpIndicator">@drawable/arrow_back_48px</item>
+    </style>
 </resources>

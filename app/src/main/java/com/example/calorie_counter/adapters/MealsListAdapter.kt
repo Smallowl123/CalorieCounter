@@ -1,4 +1,4 @@
-package com.example.calorie_counter.recyclerview
+package com.example.calorie_counter.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -21,12 +21,12 @@ class MealsListAdapter : ListAdapter<Meal, MealsListAdapter.MealsViewHolder>(Mea
     }
 
     class MealsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val mealNameView: TextView = itemView.findViewById(R.id.rv_meal_name)
+        private val mealNameView: TextView = itemView.findViewById(R.id.rv_name)
         private val mealWeightView: TextView = itemView.findViewById(R.id.rv_meal_weigth)
-        private val mealProteinView: TextView = itemView.findViewById(R.id.rv_meal_protein)
-        private val mealFatView: TextView = itemView.findViewById(R.id.rv_meal_fat)
-        private val mealCarbohView: TextView = itemView.findViewById(R.id.rv_meal_carboh)
-        private val mealCaloriesView: TextView = itemView.findViewById(R.id.rv_meal_calories)
+        private val mealProteinView: TextView = itemView.findViewById(R.id.rv_protein)
+        private val mealFatView: TextView = itemView.findViewById(R.id.rv_fat)
+        private val mealCarbohView: TextView = itemView.findViewById(R.id.rv_carboh)
+        private val mealCaloriesView: TextView = itemView.findViewById(R.id.rv_calories)
 
         fun bind(meal: Meal) {
             //TODO Добавить всплывающее меню по лонг клику с удалением/изменением веса
