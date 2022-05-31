@@ -8,8 +8,6 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CCDao {
 
-    //TODO Поиск по части name
-
     @Query("SELECT * FROM meal_table")
     fun getAllMeals(): Flow<List<Meal>>
 

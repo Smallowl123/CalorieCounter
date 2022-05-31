@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraint_layout_main"
+    android:id="@+id/constraint_layout_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E8E8E8"
@@ -13,7 +13,7 @@
         android:id="@+id/action_toolbar_profile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="#272727"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,5 +24,325 @@
         app:titleTextAppearance="@style/title_text_style"
         app:titleTextColor="@color/gray" />
 
+    <LinearLayout
+        android:id="@+id/gender_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_toolbar_profile">
 
+        <TextView
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="Пол"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/gender_text"
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="Женский"
+            android:textAlignment="viewEnd" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/age_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender_layout">
+
+        <TextView
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="Возраст"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/age_text"
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="25"
+            android:textAlignment="viewEnd" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/height_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age_layout">
+
+        <TextView
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="Рост, см"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/height_text"
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="170"
+            android:textAlignment="viewEnd" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/weight_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/height_layout">
+
+        <TextView
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="Вес, кг"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/weight_text"
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="70"
+            android:textAlignment="viewEnd" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="4dp"
+        app:cardBackgroundColor="@color/gray"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weight_layout"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView18"
+                style="@style/main_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="Выберите дефицит(профицит) параметр" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/spinner_list" />
+
+            <ImageView
+                android:id="@+id/refresh_button"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="#272727"
+                app:srcCompat="@drawable/refresh_48px" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/main_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:text="@string/about_formula"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/pfc_layout"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/calories_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/pfc_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/calories"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/profile_calories_text"
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="1700"
+            android:textAlignment="viewEnd" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pfc_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calories_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/main_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@string/protein"
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:id="@+id/profile_protein_text"
+                style="@style/main_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="107.5"
+                android:textAlignment="viewEnd" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/main_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@string/fat"
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:id="@+id/profile_fat_text"
+                style="@style/main_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="50.0"
+                android:textAlignment="viewEnd" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/main_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@string/carboh"
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:id="@+id/profile_carboh_text"
+                style="@style/main_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="107.5"
+                android:textAlignment="viewEnd" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

@@ -75,10 +75,10 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         ) { dialog, _ ->
             dialog.dismiss()
             val name: String = viewInflated.findViewById<EditText>(R.id.input_food_name).text.toString()
-            val protein: Float =viewInflated.findViewById<EditText>(R.id.input_food_protein).text.toString().toFloat()
-            val fat: Float = viewInflated.findViewById<EditText>(R.id.input_food_fat).text.toString().toFloat()
+            val protein: Float =viewInflated.findViewById<EditText>(R.id.protein_ratio).text.toString().toFloat()
+            val fat: Float = viewInflated.findViewById<EditText>(R.id.fat_ratio).text.toString().toFloat()
             val carboh: Float =
-                viewInflated.findViewById<EditText>(R.id.input_food_carboh).text.toString().toFloat()
+                viewInflated.findViewById<EditText>(R.id.carboh_ratio).text.toString().toFloat()
             val calories: Float =
                 viewInflated.findViewById<EditText>(R.id.input_food_calories).text.toString().toFloat()
             ccViewModel.insertFood(Food(0, name, protein, fat, carboh, calories, 0, true))
@@ -118,11 +118,11 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         val viewInflated: View = LayoutInflater.from(this)
             .inflate(
-                R.layout.weight_dialog,
+                R.layout.single_int_dialog,
                 findViewById(R.id.constraint_layout_search),
                 false
             )
-        val input = viewInflated.findViewById<View>(R.id.input_weight) as EditText
+        val input = viewInflated.findViewById<View>(R.id.input_single_int) as EditText
         builder.setView(viewInflated)
         builder.setPositiveButton(
             android.R.string.ok

@@ -9,10 +9,19 @@
     <string name="fat">Жиры</string>
     <string name="carboh">Углеводы</string>
     <string name="calories">Калории</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="type_weight">Введите вес</string>
     <string name="receipt_icon">Иконка рецепт</string>
     <string name="plus_icon">Иконка плюс</string>
     <string name="name">Название</string>
     <string name="_100">На 100 грамм</string>
+    <string name="about_formula">После нажатия на кнопку \"обновить\" данные будут рассчитаны по формуле Миффлина-Сан Жеора при отсутсвии любой физической нагрузки и с учетом выбранного дефицит(профицит) параметра</string>
+
+    <string-array name="spinner_list">
+        <item>Профицит 20%</item>
+        <item>Профицит 10%</item>
+        <item>Без дефицита (профицита)</item>
+        <item>Дефицит 10%</item>
+        <item>Дефицит 20%</item>
+    </string-array>
+
 </resources>

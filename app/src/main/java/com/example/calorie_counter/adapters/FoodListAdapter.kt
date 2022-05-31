@@ -48,7 +48,7 @@ class FoodListAdapter : ListAdapter<Food, FoodListAdapter.FoodViewHolder>(FoodCo
         private lateinit var currentFood: Food
 
         fun bind(food: Food) {
-            //TODO Добавить всплывающее меню по лонг клику с удалением, по клику - добавлением еды в лист основного экрана
+
             currentFood = food
 
             nameView.text = food.name

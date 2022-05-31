@@ -8,39 +8,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/input_food_name"
-            style="@style/main_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/name"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/per_hundred_grams_text"
-            style="@style/main_text_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/_100"
-            android:textSize="12sp" />
-
-        <EditText
-            android:id="@+id/input_food_calories"
-            style="@style/main_text_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:ems="10"
-            android:inputType="number"
-            android:textStyle="normal" />
-
         <TextView
             style="@style/main_text_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/calories"
-            android:textSize="12sp" />
+            android:text="Введите соотношение между БЖУ" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:hint="20"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/fat_ratio"
@@ -63,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:hint="35"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/carboh_ratio"
@@ -72,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:hint="45"
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
