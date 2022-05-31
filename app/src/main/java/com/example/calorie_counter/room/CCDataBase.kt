@@ -11,11 +11,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Database(entities = [Meal::class, Food::class], version = 1, exportSchema = false)
-public  abstract class CCDataBase : RoomDatabase(){
+abstract class CCDataBase : RoomDatabase() {
     abstract fun dao(): CCDao
 
-    private class CCDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback(){
-        override fun onCreate(db : SupportSQLiteDatabase) {
+    private class CCDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
+        override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             INSTANCE?.let { database ->
                 scope.launch {
@@ -23,12 +23,10 @@ public  abstract class CCDataBase : RoomDatabase(){
                 }
             }
         }
+
         suspend fun populateDatabase(dao: CCDao) {
             dao.deleteAllMeals()
             dao.deleteAllFood()
-            plusMeal("Chocolate", 20, 1.2f, 5.2f, 11.6f, 100f, dao)
-            plusMeal("3.2% Milk", 250, 7.5f, 8f, 11.8f, 150f, dao)
-            plusMeal("Cookie", 40, 2.6f, 5.8f, 28.7f, 175f, dao)
 
             plusFood("Картофель по-деревенски", 2f, 8f, 18.1f, 128f, dao)
             plusFood("Картофель", 2f, 0.4f, 18.1f, 80f, dao)
@@ -62,12 +60,28 @@ public  abstract class CCDataBase : RoomDatabase(){
             plusFood("Сливки 10%", 3f, 10f, 4f, 118f, dao)
 
         }
-        suspend fun plusMeal(name: String, weight: Int, protein: Float, fat: Float, carboh: Float, calories: Float, dao: CCDao){
+
+        suspend fun plusMeal(
+            name: String,
+            weight: Int,
+            protein: Float,
+            fat: Float,
+            carboh: Float,
+            calories: Float,
+            dao: CCDao
+        ) {
             val meal = Meal(0, name, weight, protein, fat, carboh, calories)
             dao.insertMeal(meal)
         }
 
-        suspend fun plusFood(name: String, protein: Float, fat: Float, carboh: Float, calories: Float, dao: CCDao){
+        suspend fun plusFood(
+            name: String,
+            protein: Float,
+            fat: Float,
+            carboh: Float,
+            calories: Float,
+            dao: CCDao
+        ) {
             val food = Food(0, name, protein, fat, carboh, calories, 0, false)
             dao.insertFood(food)
         }

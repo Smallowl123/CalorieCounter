@@ -5,7 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
 class CCApplication : Application() {
-    val database by lazy { CCDataBase.getDatabase(this, applicationScope) }
+    private val database by lazy { CCDataBase.getDatabase(this, applicationScope) }
     val repository by lazy { CCRepository(database.dao()) }
-    val applicationScope = CoroutineScope(SupervisorJob())
+    private val applicationScope = CoroutineScope(SupervisorJob())
 }

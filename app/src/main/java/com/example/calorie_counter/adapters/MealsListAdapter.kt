@@ -11,8 +11,22 @@ import com.example.calorie_counter.R
 import com.example.calorie_counter.room.entity.Meal
 
 class MealsListAdapter : ListAdapter<Meal, MealsListAdapter.MealsViewHolder>(MealsComparator()) {
+
+    private lateinit var mListener: OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClick(meal: Meal)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealsViewHolder {
-        return MealsViewHolder.create(parent)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_card, parent, false)
+
+        return MealsViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: MealsViewHolder, position: Int) {
@@ -20,46 +34,51 @@ class MealsListAdapter : ListAdapter<Meal, MealsListAdapter.MealsViewHolder>(Mea
         holder.bind(current)
     }
 
-    class MealsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MealsViewHolder(itemView: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(itemView) {
         private val mealNameView: TextView = itemView.findViewById(R.id.rv_name)
-        private val mealWeightView: TextView = itemView.findViewById(R.id.rv_meal_weigth)
+        private val mealWeightView: TextView = itemView.findViewById(R.id.rv_meal_weight)
         private val mealProteinView: TextView = itemView.findViewById(R.id.rv_protein)
         private val mealFatView: TextView = itemView.findViewById(R.id.rv_fat)
         private val mealCarbohView: TextView = itemView.findViewById(R.id.rv_carboh)
         private val mealCaloriesView: TextView = itemView.findViewById(R.id.rv_calories)
 
+        private lateinit var currentMeal: Meal
+
         fun bind(meal: Meal) {
-            //TODO Добавить всплывающее меню по лонг клику с удалением/изменением веса
+
+            currentMeal = meal
+
             mealNameView.text = meal.name
 
             var s = meal.weight.toString()
             var t = "Вес: $s"
             mealWeightView.text = t
 
-            s = meal.protein.toString()
+            s = meal.protein.format(1)
             t = "Б: $s"
             mealProteinView.text = t
 
-            s = meal.fat.toString()
+            s = meal.fat.format(1)
             t = "Ж: $s"
             mealFatView.text = t
 
-            s = meal.calories.toString()
+            s = meal.calories.format(0)
             t = "К: $s"
             mealCaloriesView.text = t
 
-            s = meal.carboh.toString()
+            s = meal.carboh.format(1)
             t = "У: $s"
             mealCarbohView.text = t
         }
 
-        companion object {
-            fun create(parent: ViewGroup): MealsViewHolder {
-                val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.recyclerview_card, parent, false)
-                return MealsViewHolder(view)
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(currentMeal)
             }
         }
+
+        private fun Float.format(digits: Int) = "%.${digits}f".format(this)
     }
 
     class MealsComparator : DiffUtil.ItemCallback<Meal>() {

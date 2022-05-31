@@ -1,14 +1,18 @@
 <resources>
     <string name="app_name">Calorie_counter</string>
     <string name="profile">Profile</string>
-    <string name="fork_knife_icon"><![CDATA[Fork&Knife icon]]></string>
-    <string name="water_drop_icon">Water drop icon</string>
+    <string name="fork_knife_icon">Иконка нож и вилка</string>
+    <string name="water_drop_icon">Иконка капля воды</string>
     <string name="norm">Норма</string>
     <string name="income">Получено</string>
     <string name="protein">Белки</string>
     <string name="fat">Жиры</string>
     <string name="carboh">Углеводы</string>
-    <string name="calories">Калорийность</string>
+    <string name="calories">Калории</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="type_weight">Введите вес</string>
+    <string name="receipt_icon">Иконка рецепт</string>
+    <string name="plus_icon">Иконка плюс</string>
+    <string name="name">Название</string>
+    <string name="_100">На 100 грамм</string>
 </resources>

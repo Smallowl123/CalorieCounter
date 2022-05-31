@@ -11,6 +11,6 @@ data class Meal(
     val weight: Int,
     @ColumnInfo(name = "protein") val protein: Float,
     @ColumnInfo(name = "fat") val fat: Float,
-    @ColumnInfo(name = "carbon") val carboh: Float,
+    @ColumnInfo(name = "carboh") val carboh: Float,
     @ColumnInfo(name = "calories") val calories: Float
 )

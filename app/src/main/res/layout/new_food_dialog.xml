@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/input_food_name"
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/name"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/per_hundred_grams_text"
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/_100"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/input_food_calories"
+            style="@style/main_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="number"
+            android:textStyle="normal" />
+
+        <TextView
+            style="@style/main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/calories"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_food_protein"
+                style="@style/main_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/input_food_fat"
+                style="@style/main_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/input_food_carboh"
+                style="@style/main_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/main_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/protein"
+                android:textSize="12sp" />
+
+            <TextView
+                style="@style/main_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fat"
+                android:textSize="12sp" />
+
+            <TextView
+                style="@style/main_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/carboh"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,8 +1,6 @@
 package com.example.calorie_counter.room
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.calorie_counter.room.entity.Food
 import com.example.calorie_counter.room.entity.Meal
 import kotlinx.coroutines.flow.Flow
@@ -18,6 +16,7 @@ interface CCDao {
     @Insert(onConflict = 5)
     suspend fun insertMeal(meal: Meal)
 
+
     @Query("DELETE FROM meal_table")
     suspend fun deleteAllMeals()
 
@@ -28,11 +27,20 @@ interface CCDao {
     fun getAllFood(): Flow<List<Food>>
 
     @Query("SELECT * FROM food_table WHERE lastInIndex > 0 ORDER BY lastInIndex DESC limit 20")
-    fun getLastUsedFood(): Flow<List<Food>>
+    fun getMostPopularFood(): Flow<List<Food>>
 
     @Query("SELECT * FROM food_table WHERE name LIKE :searchQuery ORDER BY userMade DESC")
     fun getSearchedFood(searchQuery: String): Flow<List<Food>>
 
     @Insert(onConflict = 5)
     suspend fun insertFood(food: Food)
+
+    @Update
+    suspend fun updateFood(food: Food)
+
+    @Update
+    suspend fun updateMeal(meal: Meal)
+
+    @Delete
+    suspend fun deleteMeal(meal: Meal)
 }
