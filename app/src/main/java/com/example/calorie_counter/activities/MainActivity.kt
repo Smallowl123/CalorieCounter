@@ -3,6 +3,7 @@ package com.example.calorie_counter.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -26,8 +27,6 @@ class MainActivity : AppCompatActivity() {
     private val ccViewModel: CCViewModel by viewModels {
         CCViewModelFactory((application as CCApplication).repository)
     }
-    private var backFromProfile = false
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +35,11 @@ class MainActivity : AppCompatActivity() {
         setButtonListener()
         readSharedPreferences()
         setRecyclerView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        readSharedPreferences()
     }
 
     private fun updateMealWeight(meal: Meal) {
@@ -51,8 +55,8 @@ class MainActivity : AppCompatActivity() {
         builder.setPositiveButton(
             android.R.string.ok
         ) { dialog, _ ->
-            dialog.dismiss()
-            val weight = Integer.parseInt(input.text.toString())
+            val weight =
+                if (TextUtils.isEmpty(input.text.toString())) 0 else Integer.parseInt(input.text.toString())
             if (weight != 0) {
                 val k: Float = meal.weight.toFloat() / weight.toFloat()
                 ccViewModel.updateMeal(
@@ -69,11 +73,11 @@ class MainActivity : AppCompatActivity() {
             } else {
                 ccViewModel.deleteMeal(meal)
             }
+            dialog.dismiss()
         }
         builder.setNegativeButton(
             android.R.string.cancel
         ) { dialog, _ -> dialog.cancel() }
-
         builder.show()
     }
 
@@ -84,9 +88,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.clean -> ccViewModel.deleteAllMeals()
+            R.id.clean -> {
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                builder.setTitle("Подтвердить удаление?")
+                builder.setPositiveButton(
+                    "Подтвердить"
+                ) { dialog, _ ->
+                    ccViewModel.deleteAllMeals()
+                    dialog.dismiss()
+                }
+                builder.setNegativeButton(
+                    android.R.string.cancel
+                ) { dialog, _ -> dialog.cancel() }
+                builder.show()
+                }
             R.id.profile -> {
-                backFromProfile = true
                 val intent = Intent(this@MainActivity, ProfileActivity::class.java)
                 startActivity(intent)
             }
@@ -109,11 +125,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.protein_income_text).text = proteinSum.format(1)
         findViewById<TextView>(R.id.fat_income_text).text = fatSum.format(1)
         findViewById<TextView>(R.id.carboh_income_text).text = carbohSum.format(1)
-
-        if (backFromProfile) {
-            readSharedPreferences()
-            backFromProfile = false
-        }
     }
 
     private fun Float.format(digits: Int) = "%.${digits}f".format(this)

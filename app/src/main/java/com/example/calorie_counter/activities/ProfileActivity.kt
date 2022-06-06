@@ -3,6 +3,7 @@ package com.example.calorie_counter.activities
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -20,7 +21,6 @@ class ProfileActivity : AppCompatActivity() {
         initSharedPreferences()
         setClickListeners()
         setSupportActionBar(findViewById(R.id.action_toolbar_profile))
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
     }
@@ -100,18 +100,22 @@ class ProfileActivity : AppCompatActivity() {
             builder.setPositiveButton(
                 android.R.string.ok
             ) { dialog, _ ->
-                dialog.dismiss()
-
-                val int = input.text.toString()
-                val k: Float = caloriesOld / int.toFloat()
+                val int =
+                    if (TextUtils.isEmpty(input.text.toString())) "0" else input.text.toString()
                 var protein: Float =
                     sharedPref.getString("saved_protein", "80").toString().toFloat()
                 var fat: Float = sharedPref.getString("saved_fat", "62.2").toString().toFloat()
                 var carboh: Float = sharedPref.getString("saved_carboh", "180").toString().toFloat()
-
-                protein /= k
-                fat /= k
-                carboh /= k
+                if (TextUtils.equals(int, "0")) {
+                    protein = 0f
+                    fat = 0f
+                    carboh = 0f
+                } else {
+                    val k = caloriesOld / int.toFloat()
+                    protein /= k
+                    fat /= k
+                    carboh /= k
+                }
                 with(sharedPref.edit()) {
                     putString("saved_calories", int)
                     putString("saved_protein", protein.format(1))
@@ -123,7 +127,7 @@ class ProfileActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.profile_protein_text).text = protein.format(1)
                 findViewById<TextView>(R.id.profile_fat_text).text = fat.format(1)
                 findViewById<TextView>(R.id.profile_carboh_text).text = carboh.format(1)
-
+                dialog.dismiss()
             }
             builder.setNegativeButton(
                 android.R.string.cancel
@@ -201,10 +205,15 @@ class ProfileActivity : AppCompatActivity() {
             builder.setPositiveButton(
                 android.R.string.ok
             ) { dialog, _ ->
-                dialog.dismiss()
-                val pRatio = proteinRatio.text.toString().toFloat()
-                val fRatio = fatRatio.text.toString().toFloat()
-                val cRatio = carbohRatio.text.toString().toFloat()
+                val pRatio =
+                    if (TextUtils.isEmpty(proteinRatio.text.toString())) 1f else proteinRatio.text.toString()
+                        .toFloat()
+                val fRatio =
+                    if (TextUtils.isEmpty(fatRatio.text.toString())) 1f else fatRatio.text.toString()
+                        .toFloat()
+                val cRatio =
+                    if (TextUtils.isEmpty(carbohRatio.text.toString())) 1f else carbohRatio.text.toString()
+                        .toFloat()
                 val calories = sharedPref.getString("saved_calories", "1600").toString().toFloat()
                 val sumRatio = pRatio + fRatio + cRatio
 
@@ -221,6 +230,7 @@ class ProfileActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.profile_protein_text).text = protein
                 findViewById<TextView>(R.id.profile_fat_text).text = fat
                 findViewById<TextView>(R.id.profile_carboh_text).text = carboh
+                dialog.dismiss()
             }
             builder.setNegativeButton(
                 android.R.string.cancel
@@ -244,12 +254,15 @@ class ProfileActivity : AppCompatActivity() {
         builder.setPositiveButton(
             android.R.string.ok
         ) { dialog, _ ->
-            dialog.dismiss()
-            val int = input.text.toString()
+            var int = input.text.toString()
+            if (TextUtils.isEmpty(int)) {
+                int = "0"
+            }
             with(sharedPref.edit()) {
                 putString(key, int)
                 apply()
             }
+            dialog.dismiss()
             textView.text = int
 
         }
@@ -275,12 +288,17 @@ class ProfileActivity : AppCompatActivity() {
         builder.setPositiveButton(
             android.R.string.ok
         ) { dialog, _ ->
-            dialog.dismiss()
-            val float = input.text.toString().toFloat().format(1)
+            var float = input.text.toString()
+            float = if (TextUtils.isEmpty(float)) {
+                "0"
+            } else {
+                float.toFloat().format(1)
+            }
             with(sharedPref.edit()) {
                 putString(key, float)
                 apply()
             }
+            dialog.dismiss()
             textView.text = float
 
         }

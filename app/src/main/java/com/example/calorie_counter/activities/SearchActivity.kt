@@ -1,6 +1,7 @@
 package com.example.calorie_counter.activities
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -31,11 +32,22 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        setSupportActionBar(findViewById(R.id.action_toolbar_search))
+        setToolBarAsActionBar()
+        setRecyclerView()
+        setListeners()
+    }
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+    private fun setListeners() {
+        val searchView = findViewById<SearchView>(R.id.searchView)
+        searchView.setOnQueryTextListener(this)
 
+        val addFoodButton: ImageView = findViewById(R.id.add_food_button)
+        addFoodButton.setOnClickListener {
+            addFoodToDB()
+        }
+    }
+
+    private fun setRecyclerView() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview_search)
 
         adapter.setOnItemClickListener(object : FoodListAdapter.OnItemClickListener {
@@ -51,14 +63,6 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         ) { foods ->
             foods?.let { adapter.submitList(it) }
         }
-
-        val searchView = findViewById<SearchView>(R.id.searchView)
-        searchView.setOnQueryTextListener(this)
-
-        val addFoodButton: ImageView = findViewById(R.id.add_food_button)
-        addFoodButton.setOnClickListener {
-            addFoodToDB()
-        }
     }
 
     private fun addFoodToDB() {
@@ -73,15 +77,25 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         builder.setPositiveButton(
             android.R.string.ok
         ) { dialog, _ ->
-            dialog.dismiss()
-            val name: String = viewInflated.findViewById<EditText>(R.id.input_food_name).text.toString()
-            val protein: Float =viewInflated.findViewById<EditText>(R.id.protein_ratio).text.toString().toFloat()
-            val fat: Float = viewInflated.findViewById<EditText>(R.id.fat_ratio).text.toString().toFloat()
+            val name: String =
+                if (TextUtils.isEmpty(viewInflated.findViewById<EditText>(R.id.input_food_name).text.toString())) "Название"
+                else viewInflated.findViewById<EditText>(R.id.input_food_name).text.toString()
+            val protein: Float =
+                if (TextUtils.isEmpty(viewInflated.findViewById<EditText>(R.id.protein_ratio).text.toString())) 0f else
+                    viewInflated.findViewById<EditText>(R.id.protein_ratio).text.toString()
+                        .toFloat()
+            val fat: Float =
+                if (TextUtils.isEmpty(viewInflated.findViewById<EditText>(R.id.fat_ratio).text.toString())) 0f else
+                    viewInflated.findViewById<EditText>(R.id.fat_ratio).text.toString().toFloat()
             val carboh: Float =
-                viewInflated.findViewById<EditText>(R.id.carboh_ratio).text.toString().toFloat()
+                if (TextUtils.isEmpty(viewInflated.findViewById<EditText>(R.id.carboh_ratio).text.toString())) 0f else
+                    viewInflated.findViewById<EditText>(R.id.carboh_ratio).text.toString().toFloat()
             val calories: Float =
-                viewInflated.findViewById<EditText>(R.id.input_food_calories).text.toString().toFloat()
+                if (TextUtils.isEmpty(viewInflated.findViewById<EditText>(R.id.input_food_calories).text.toString())) 0f else
+                    viewInflated.findViewById<EditText>(R.id.input_food_calories).text.toString()
+                        .toFloat()
             ccViewModel.insertFood(Food(0, name, protein, fat, carboh, calories, 0, true))
+            dialog.dismiss()
         }
         builder.setNegativeButton(
             android.R.string.cancel
@@ -128,7 +142,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             android.R.string.ok
         ) { dialog, _ ->
             dialog.dismiss()
-            val weight = Integer.parseInt(input.text.toString())
+            val weight = if (TextUtils.isEmpty(input.text.toString())) 0 else Integer.parseInt(input.text.toString())
             if (weight != 0) {
                 ccViewModel.insertMeal(createMeal(food, weight))
                 ccViewModel.updateFood(
@@ -173,6 +187,11 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         ccViewModel.getSearchedFood(searchQuery).observe(this) { foods ->
             foods?.let { adapter.submitList(foods) }
         }
+    }
 
+    private fun setToolBarAsActionBar() {
+        setSupportActionBar(findViewById(R.id.action_toolbar_search))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
     }
 }
