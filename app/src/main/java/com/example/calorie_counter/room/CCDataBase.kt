@@ -61,19 +61,6 @@ abstract class CCDataBase : RoomDatabase() {
 
         }
 
-        suspend fun plusMeal(
-            name: String,
-            weight: Int,
-            protein: Float,
-            fat: Float,
-            carboh: Float,
-            calories: Float,
-            dao: CCDao
-        ) {
-            val meal = Meal(0, name, weight, protein, fat, carboh, calories)
-            dao.insertMeal(meal)
-        }
-
         suspend fun plusFood(
             name: String,
             protein: Float,

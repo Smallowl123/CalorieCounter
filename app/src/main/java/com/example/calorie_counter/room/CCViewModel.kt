@@ -7,7 +7,6 @@ import kotlinx.coroutines.launch
 
 class CCViewModel(private val repository: CCRepository) : ViewModel() {
     val allMeals: LiveData<List<Meal>> = repository.allMeals.asLiveData()
-    val allFood: LiveData<List<Food>> = repository.allFood.asLiveData()
     val popularFood: LiveData<List<Food>> = repository.popularFood.asLiveData()
 
     fun insertMeal(meal: Meal) = viewModelScope.launch {
